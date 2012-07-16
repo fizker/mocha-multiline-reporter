@@ -2,6 +2,7 @@ exports = module.exports = multiline
 
 var color = require('mocha').reporters.Base.color
   , write = process.stdout.write.bind(process.stdout)
+  , formatter = require('./formatter')
 
 function multiline(runner) {
 	var fails = []
@@ -29,7 +30,7 @@ function multiline(runner) {
 	runner.on('end', function() {
 		write('\n\n')
 		fails.forEach(function(test) {
-			write(color('fail', test.err.toString()))
+			write(color('fail', formatter(test.err.toString())))
 		})
 		write('\n')
 	})
