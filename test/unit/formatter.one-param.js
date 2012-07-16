@@ -14,17 +14,17 @@ describe('unit/formatter.one-param.js', function() {
 			var result = formatter('expected "abc" to equal "abc\\ndef"')
 
 			expect(result).to.equal(
-				  'expected "abc" to equal "abc"\n'
-				+ '                        "def"'
+				  'expected |abc| to equal |abc|\n'
+				+ '                        |def|'
 			)
 		})
 		it('should return the expect on three lines', function() {
 			var result = formatter('expected "abc" to equal "abc\\ndef\\nghi"')
 
 			expect(result).to.equal(
-				  'expected "abc" to equal "abc"\n'
-				+ '                        "def"\n'
-				+ '                        "ghi"'
+				  'expected |abc| to equal |abc|\n'
+				+ '                        |def|\n'
+				+ '                        |ghi|'
 			)
 		})
 		it('should make expect the same length on all lines', function() {
@@ -32,9 +32,9 @@ describe('unit/formatter.one-param.js', function() {
 			      'expected "abc" to equal "abc\\ndefg\\nghi"')
 
 			expect(result).to.equal(
-				  'expected "abc" to equal "abc "\n'
-				+ '                        "defg"\n'
-				+ '                        "ghi "'
+				  'expected |abc| to equal |abc |\n'
+				+ '                        |defg|\n'
+				+ '                        |ghi |'
 			)
 		})
 	})
@@ -44,17 +44,17 @@ describe('unit/formatter.one-param.js', function() {
 			var result = formatter('expected "abc\\ndef" to equal "def"')
 
 			expect(result).to.equal(
-				  'expected "abc" to equal "def"\n'
-				+ '         "def"'
+				  'expected |abc| to equal |def|\n'
+				+ '         |def|'
 			)
 		})
 		it('should return the expect on three lines', function() {
 			var result = formatter('expected "abc\\ndef\\nghi" to equal "def"')
 
 			expect(result).to.equal(
-				  'expected "abc" to equal "def"\n'
-				+ '         "def"\n'
-				+ '         "ghi"'
+				  'expected |abc| to equal |def|\n'
+				+ '         |def|\n'
+				+ '         |ghi|'
 			)
 		})
 		it('should make expect the same length on all lines', function() {
@@ -64,9 +64,9 @@ describe('unit/formatter.one-param.js', function() {
 			    + 'ghi" to equal "def"')
 
 			expect(result).to.equal(
-				  'expected "abc " to equal "def"\n'
-				+ '         "defg"\n'
-				+ '         "ghi "'
+				  'expected |abc | to equal |def|\n'
+				+ '         |defg|\n'
+				+ '         |ghi |'
 			)
 		})
 	})
