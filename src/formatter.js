@@ -8,8 +8,9 @@ function format(input) {
 }
 
 function fixNewline(input) {
-	var idxS = input.indexOf('"')
-	  , idxE = input.indexOf('"', idxS+1)
+	var delim = getDelimiter(input)
+	  , idxS = input.indexOf(delim)
+	  , idxE = input.indexOf(delim, idxS+1)
 	  , idx
 	  , expect = getDetails(input)
 	  , actual
@@ -53,9 +54,18 @@ function fixNewline(input) {
 	}
 }
 
+function getDelimiter(str) {
+	var single = str.indexOf("'")
+	  , double = str.indexOf('"')
+	return single > -1 && (double == -1 || single < double)
+	       ? "'"
+	       : '"'
+}
+
 function getDetails(input, start) {
-	var idxS = input.indexOf('"', start)
-	  , idxE = input.indexOf('"', idxS+1)
+	var delim = getDelimiter(input)
+	  , idxS = input.indexOf(delim, start)
+	  , idxE = input.indexOf(delim, idxS+1)
 	  , str = input.substring(idxS+1, idxE)
 	  , lines = str.split(/\\n/g)
 	  , length = lines.reduce(getLength, 0)
