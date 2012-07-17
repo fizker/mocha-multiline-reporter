@@ -1,5 +1,5 @@
 { "name": "mocha-multiline-reporter"
-, "version": "0.1.0"
+, "version": "0.2.0"
 , "description": "A multi-line reporter for mocha."
 , "main": "index.js"
 , "scripts":
